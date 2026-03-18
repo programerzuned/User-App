@@ -125,41 +125,24 @@ class UserListScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: double.infinity,
-                                  height: 200,
+                                  width: 450,
+                                  height: 300,
                                   child: Lottie.asset(
                                     'assets/animations/network_error.json',
                                     fit: BoxFit.contain,
-                                    repeat: true,
                                   ),
                                 ),
                                 const SizedBox(height: 16),
-                                Builder(builder: (_) {
-                                  String error = controller.errorMessage.value.toLowerCase();
-                                  bool noInternet = error.contains('internet') ||
-                                      error.contains('socket') ||
-                                      error.contains('failed host') ||
-                                      error.contains('connection');
-                                  return Text(
-                                    noInternet ? "No internet connection" : controller.errorMessage.value,
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context).textTheme.titleMedium,
-                                  );
-                                }),
+                                Text(
+                                  controller.errorMessage.value,
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                ),
                                 const SizedBox(height: 24),
                                 ElevatedButton(
                                   onPressed: controller.fetchUsers,
-                                  child: Text(
-                                    "Retry",
-                                    textAlign: TextAlign.center,
-                                    style: Theme.of(context).textTheme.titleMedium,
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                  ),
+                                  child:  Text("Retry",
+                                    style: Theme.of(context).textTheme.titleMedium,),
                                 ),
                               ],
                             ),
